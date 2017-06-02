@@ -1,0 +1,40 @@
+Valentine
+Cornish Rex
+f
+1
+Babsy
+Arabian Mau
+f
+4
+Teman
+Traditional Siamese cat
+m
+5
+Koren
+Pixie-bob
+f
+1
+Messina
+Himalayan cat
+f
+4
+Timandra
+Egyptian Mau
+f
+8
+Kenn
+Chantilly-Tiffany
+m
+4
+Osmond
+Siamese cat
+m
+8
+Label
+Cornish Rex
+m
+1
+Bersh
+German Rex
+m
+10
