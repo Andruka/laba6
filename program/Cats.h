@@ -18,10 +18,6 @@ class Cat{
     friend Program;
 };
 class Program{
-    string t_name;
-    string t_breed;
-    char t_gender;
-    int t_age;    
   public:
     int start();
     int compare(Cat cat1,Cat cat2,int type);

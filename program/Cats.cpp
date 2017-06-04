@@ -36,13 +36,14 @@ istream & operator >> (istream & stream, Cat & cat) {
     cat.gender=buf[0];
     getline (stream, buf);
     cat.age=atoi(buf.c_str());
+    cout<<cat<<endl;
     return stream;
 }
 int Program::start(){
     string buf;
     const char * F1="1.txt";
     const char * F2="2.txt";
-    ifstream fin("../laba6/generator/result.txt");
+    ifstream fin("../generator/result.txt");
     if(!fin)return 1;
     ofstream fout1(F1);
     ofstream fout2(F2);
@@ -91,76 +92,186 @@ void Program::sort(int type){
     const char * F3="3.txt";
     const char * F4="4.txt";
     int x=1;
-    int blockFin1=0,blockFin2=1;//осталось считать котов из этого файла до конца блока
-    int checkFin=1;//из какого файла будет считан кот
-    bool checkFout=true;//проверка файла,в который запишется кот
-    bool check1=true;
-    int checkCat=1;//этот этот кот оказался меньшим
+    int blockFin1,blockFin2;//осталось считать котов из этого файла до конца блока
+    int checkFin;//из какого файла будет считан кот
+    bool checkFout;//проверка файла,в который запишется кот
+    int checkCat;//этот этот кот оказался меньшим
+    bool checkFinish1,checkFinish2;
     Cat cat1;
     Cat cat2;
     Cat temp;
-    //while(true){
+    while(true){
+	blockFin1=x-1,blockFin2=x;
+	checkFin=2;
+	checkFinish1=checkFinish2=checkFout=false;
+	checkCat=2;
 	ifstream fin1(F1),fin2(F2);
 	ofstream fout1(F3),fout2(F4);
-	fin1>>cat1;
+	fin1>>temp;
+        if(fin1.eof()){rename("2.txt","result.txt");return;}
+	cat1=temp;
 	    while(blockFin1 || blockFin2){
+		if(blockFin1==x && blockFin2==x){
+		    if(checkCat==1){
+			if(checkFout)fout2<<cat2;
+			else fout1<<cat2;
+			}
+		    else{
+			if(checkFout)fout2<<cat1;
+			else fout1<<cat1;
+			}
+		    if(checkFin==1){
+			fin2>>temp;
+			if(fin2.eof()){
+			if(blockFin2!=x)checkFinish2=true;
+			if(!fin1.eof())blockFin1+=blockFin2;
+			blockFin2=0;continue;
+			}
+			if(checkCat==1)cat2=temp;
+			else cat1=temp;
+			--blockFin2;
+			}
+		    else{
+			fin1>>temp;
+			if(fin1.eof()){
+			if(blockFin1!=x)checkFinish1=true;
+			if(!fin2.eof())blockFin2+=blockFin1;
+			blockFin1=0;continue;
+			}
+			if(checkCat==1)cat2=temp;
+			else cat1=temp;
+			--blockFin1;			
+			}
+		    }
+		else{
+		    if(blockFin1==x && fin2.eof()){
+			fin1>>temp;
+			if(fin1.eof()){
+			    blockFin1=0;continue;
+			    }
+		        if(checkCat==1){
+			    if(checkFout)fout2<<cat2;
+			    else fout1<<cat2;
+			    }
+		        else{
+			    if(checkFout)fout2<<cat1;
+			    else fout1<<cat1;
+			    }
+			if(checkCat==1)cat2=temp;
+			else cat1=temp;
+			--blockFin1;		    		    
+		        }
+		    else{
+			if(blockFin2==x && fin1.eof()){
+			    fin2>>temp;
+			    if(fin2.eof()){blockFin2=0;continue;}
+		            if(checkCat==1){
+			        if(checkFout)fout2<<cat2;
+			        else fout1<<cat2;
+			        }
+		            else{
+			        if(checkFout)fout2<<cat1;
+			        else fout1<<cat1;
+			        }
+			    if(checkCat==1)cat2=temp;
+			    else cat1=temp;
+			    --blockFin2;					    
+		            }
+		        }
+  		    }
 		if(!blockFin1 || !blockFin2){
-		    if(blockFin1=0){
+		    if(blockFin1==0){
 			while(blockFin2!=0){
 			    fin2>>temp;
-			    if(fin2.eof()){blockFin2=0;break;}
-			    --blockFin2;
+			    if(fin2.eof()){
+				if(blockFin2!=x)checkFinish2=true;
+				if(!fin1.eof())blockFin1+=blockFin2;
+				blockFin2=0;				
+				break;
+				}
+			    --blockFin2;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
 			    if(checkCat==1)cat1=temp;
 			    else cat2=temp;
 			    if(compare(cat1,cat2,type)==1){
-			    if(checkFout){fout1<<cat1;checkFout=false;}
-				else {fout2<<cat1;checkFout=true;}
+			    if(checkFout){fout1<<cat1;cout<<"----"<<1<<endl;}
+				else {fout2<<cat1;cout<<"----"<<2<<endl;}
 				checkCat=1;
 			 	}
 			    else{
-				if(checkFout){fout1<<cat2;checkFout=false;}
-				else {fout2<<cat2;checkFout=true;}
+				if(checkFout){fout1<<cat2;cout<<"----"<<1<<endl;}
+				else {fout2<<cat2;cout<<"----"<<2<<endl;}
 				checkCat=2;				    
 				}
 			    }
-		 	if(fin1.eof() ||fin2.eof()){blockFin1=blockFin2=0;break;}
-			blockFin1=blockFin2=x;
+			if(blockFin1==0 || blockFin2==0)blockFin1=blockFin2=x;
+		 	if(fin1.eof() ||fin2.eof()){
+			    if(fin1.eof())blockFin1=0;
+			    if(fin2.eof())blockFin2=0;
+			    }
+			if(!fin1.eof() || !fin2.eof()){
+			    if(checkFout)checkFout=false;
+			    else checkFout=true;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+			    }
 			continue;
 			}
 		    else{
 			while(blockFin1!=0){
 			    fin1>>temp;
-			    if(fin1.eof()){blockFin1=0;break;}
-			    --blockFin1;
+			    if(fin1.eof()){
+				if(blockFin1!=x)checkFinish1=true;
+				if(!fin2.eof())blockFin2+=blockFin1;
+				blockFin1=0;
+				break;
+				}
+			    --blockFin1;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
 			    if(checkCat==1)cat1=temp;
 			    else cat2=temp;
 			    if(compare(cat1,cat2,type)==1){
-				if(checkFout){fout1<<cat1;checkFout=false;}
-				else {fout2<<cat1;checkFout=true;}
+				if(checkFout){fout1<<cat1;cout<<"----"<<1<<endl;}
+				else {fout2<<cat1;cout<<"----"<<2<<endl;}
 				checkCat=1;
 				}
 			    else{
-				if(checkFout){fout1<<cat2;checkFout=false;}
-				else {fout2<<cat2;checkFout=true;}	
+				if(checkFout){fout1<<cat2;cout<<"----"<<1<<endl;}
+				else {fout2<<cat2;cout<<"----"<<2<<endl;}	
 				checkCat=2;			    
 				}
 			    }
-		 	if(fin1.eof()==1 ||fin2.eof()==1){blockFin1=blockFin2=0;break;}
-			blockFin1=blockFin2=x;
+			if(blockFin1==0 || blockFin2==0)blockFin1=blockFin2=x;
+		 	if(fin1.eof() ||fin2.eof()){
+			    if(fin1.eof())blockFin1=0;
+			    if(fin2.eof())blockFin2=0;
+			    }
+			if(!fin1.eof() || !fin2.eof()){
+			    if(checkFout)checkFout=false;
+			    else checkFout=true;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+			    }
 			continue;			    
 			}
 		    }
-		if(checkFin==1)fin1>>temp;
-	 	if(fin1.eof()){blockFin1=0;break;}
-		--blockFin1;
-		if(checkFin==2)fin2>>temp;
-	 	if(fin2.eof()){blockFin2=0;break;}
-		--blockFin2;
+		if(checkFin==1){
+		    fin1>>temp;
+	 	    if(fin1.eof()){
+			if(blockFin1!=x)checkFinish1=true;
+			blockFin2+=blockFin1;
+			blockFin1=0;continue;
+			}
+		    --blockFin1;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+		    }
+		if(checkFin==2){
+		    fin2>>temp;
+	 	    if(fin2.eof()){
+			if(blockFin2!=x)checkFinish2=true;
+			blockFin1+=blockFin2;
+			blockFin2=0;continue;
+			}
+		    --blockFin2;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+		    }
 		if(checkCat==1)cat1=temp;
 		else cat2=temp;
 		if(compare(cat1,cat2,type)==1){
-		    if(checkFout){fout1<<cat1;checkFout=false;}
-		    else {fout2<<cat1;checkFout=true;}
+		    if(checkFout){fout1<<cat1;cout<<"----"<<1<<endl;}
+		    else {fout2<<cat1;cout<<"----"<<2<<endl;}
 		    if(checkCat==2){
 			if(checkFin==1)checkFin=2;
 			else checkFin=1;
@@ -168,8 +279,8 @@ void Program::sort(int type){
 		    checkCat=1;	
 		    }
 		else{
-		    if(checkFout){fout1<<cat2;checkFout=false;}
-		    else {fout2<<cat2;checkFout=true;}
+		    if(checkFout){fout1<<cat2;cout<<"----"<<1<<endl;}
+		    else {fout2<<cat2;cout<<"----"<<2<<endl;}
 		    if(checkCat==1){
 			if(checkFin==1)checkFin=2;
 			else checkFin=1;
@@ -177,56 +288,28 @@ void Program::sort(int type){
 		    checkCat=2;			
 		    }
 		}
-cout<<1<<endl;
-	    if(!fin1.eof()){
-		while(!fin1.eof()){
-		    fin1>>temp;
-		    if(fin1.eof()){blockFin1=0;break;}
-		    if(checkCat==1)cat1=temp;
-		    else cat2=temp;
-		    if(compare(cat1,cat2,type)==1){
-			checkCat=1;
-		        if(checkFout){fout1<<cat1;checkFout=false;}
-			else {fout2<<cat1;checkFout=true;}
-			}
-		    else{
-			checkCat=2;
-			if(checkFout){fout1<<cat2;checkFout=false;}
-			else {fout2<<cat2;checkFout=true;}				    
-			}
-		    }
+	if(checkFinish1 && checkFinish2){
+	    if(checkCat==1){
+		if(checkFout)fout1<<cat2;
+		else fout2<<cat2;
 		}
-cout<<2<<endl;
-	    if(!fin2.eof()){
-		while(!fin2.eof()){
-		    fin2>>temp;
-		    if(fin2.eof()){blockFin2=0;break;}
-		    if(checkCat==1)cat1=temp;
-		    else cat2=temp;
-		    if(compare(cat1,cat2,type)==1){
-		        checkCat=1;
-		        if(checkFout){fout1<<cat1;checkFout=false;}
-			else {fout2<<cat1;checkFout=true;}
-			}
-		    else{
-			checkCat=2;
-			if(checkFout){fout1<<cat2;checkFout=false;}
-			else {fout2<<cat2;checkFout=true;}				    
-			}
-		    }		    
+	    else{
+		if(checkFout)fout1<<cat1;
+		else fout2<<cat1;		
 		}
-	blockFin1=blockFin2=x=x*2;
+	    }
+	x=x*2;
 	fin1.close();
 	fin2.close();
 	fout1.close();
 	fout2.close();
-	/*rename("1.txt","temp.txt");
+	rename("1.txt","temp.txt");
 	rename("3.txt","1.txt");
 	rename("temp.txt","3.txt");
 	rename("2.txt","temp.txt");
 	rename("4.txt","2.txt");
-	rename("temp.txt","4.txt");*/
-	//}
+	rename("temp.txt","4.txt");
+	}
 }
 void Program::work(){
     int type;
