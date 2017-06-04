@@ -1,0 +1,396 @@
+Roderica
+Chantilly-Tiffany
+f
+1
+Burgess
+Traditional Persian
+m
+1
+Elle
+Cymric cat
+f
+1
+Varanese
+LaPerm
+f
+1
+Edana
+Turkish Van
+f
+1
+Brice
+Oriental Longhair
+f
+1
+Keandra
+Aegean cat
+f
+1
+Ahava
+Russian White Black and Tabby
+f
+1
+Neola
+Highlander cat
+f
+1
+Morven
+Oregon Rex
+m
+1
+Carmel
+Maine Coon
+f
+2
+Zoltar
+Peterbald
+m
+2
+Foebus
+Russian White Black and Tabby
+m
+2
+Pixie
+Chartreux
+f
+2
+Price
+Cheetoh cat
+m
+2
+Florence
+Suphalak
+f
+2
+Fidel
+Dragon Li
+m
+2
+Moselle
+American Curl
+f
+2
+Vasanta
+Ragamuffin cat
+f
+2
+Amaris
+Pittsburgh refrigerator cat
+f
+2
+Haimi
+Lykoi
+f
+2
+Sophie
+Devon Rex
+f
+2
+Ellery
+Australian Mist
+m
+2
+Kirk
+Munchkin cat
+m
+3
+York
+Javanese cat
+m
+3
+Thomasa
+Munchkin cat
+f
+3
+Aniston
+Singapura cat
+m
+3
+Maud
+American Wirehair
+f
+3
+Kasen
+Burmilla
+m
+4
+Vandita
+Tonkinese cat
+f
+4
+Mercedes
+Snowshoe cat
+f
+4
+Zafer
+Dragon Li
+m
+4
+Beth
+Minskin
+f
+4
+Barbie
+LaPerm
+f
+4
+Saida
+York Chocolate
+f
+4
+Servan
+Snowshoe cat
+m
+4
+Selby
+European Shorthair
+f
+5
+Rex
+Colorpoint Shorthair
+m
+5
+Jesse
+Snowshoe cat
+m
+5
+Tano
+American Wirehair
+m
+5
+Nima
+Ragdoll
+f
+5
+Finlay
+York Chocolate
+m
+5
+Ekta
+Pixie-bob
+f
+5
+Hayes
+Sokoke
+m
+5
+Vito
+Raas cat
+m
+5
+Bria
+Australian Mist
+f
+5
+Xcell
+Bengal cat
+m
+5
+Vanora
+Thai cat
+f
+5
+Mine
+Khao Manee
+f
+5
+Zara
+Bambino cat
+f
+5
+Rina
+Balinese cat
+f
+5
+Lovenia
+Foldex cat
+f
+5
+Laird
+Lykoi
+m
+6
+Patty
+Scottish Fold
+f
+6
+Magda
+Oriental Bicolour
+f
+6
+Yachne
+York Chocolate
+f
+6
+Malvina
+Burmilla
+f
+6
+Daniela
+Sphynx cat
+f
+7
+Trevor
+Chausie
+m
+7
+Brewster
+Lykoi
+m
+7
+Anatole
+Ocicat
+m
+7
+Laquetta
+Cymric cat
+f
+7
+Yanis
+Asian cat
+m
+7
+Lina
+Thai cat
+f
+7
+Xander
+Ragdoll
+m
+7
+Adalia
+Sam Sawet
+f
+7
+Silvio
+German Rex
+m
+7
+Urania
+Cornish Rex
+f
+7
+Bem
+Toyger
+m
+7
+Zebina
+Skookum cat
+f
+7
+Patia
+Balinese cat
+f
+7
+Avion
+LaPerm
+m
+7
+Ketika
+Ragamuffin cat
+f
+8
+Pixie
+Persian cat
+f
+8
+Tai
+Burmilla
+f
+8
+Xiomara
+Siamese cat
+f
+8
+Idonia
+Cashmere cat
+f
+8
+Amol
+Selkirk Rex
+m
+8
+Nadine
+Aegean cat
+f
+8
+Petula
+Lykoi
+f
+8
+Acacio
+Sphynx cat
+m
+8
+Paloma
+Oriental Longhair
+f
+8
+Bridget
+Turkish Angora
+f
+8
+Nestor
+Somali cat
+m
+8
+Berk
+Colorpoint Shorthair
+m
+8
+Zeno
+Tonkinese cat
+m
+8
+Selena
+British Longhair
+f
+8
+Jocelyn
+Balinese cat
+f
+8
+Galen
+Russian White Black and Tabby
+m
+9
+Ransom
+Thai Lilac
+m
+9
+X-Man
+Sphynx cat
+m
+9
+Vasilios
+Singapura cat
+m
+9
+Keenan
+Javanese cat
+m
+9
+Zephyr
+Egyptian Mau
+f
+9
+Lola
+Tonkinese cat
+f
+9
+Kennis
+Sphynx cat
+f
+9
+Litton
+Ukrainian Levkoy
+m
+9
+Nina
+Oriental Bicolour
+f
+9
+Hadassa
+Napoleon cat
+f
+9

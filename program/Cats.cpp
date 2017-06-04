@@ -92,10 +92,10 @@ void Program::sort(int type){
     const char * F3="3.txt";
     const char * F4="4.txt";
     int x=1;
-    int blockFin1,blockFin2;//осталось считать котов из этого файла до конца блока
-    int checkFin;//из какого файла будет считан кот
-    bool checkFout;//проверка файла,в который запишется кот
-    int checkCat;//этот этот кот оказался меньшим
+    int blockFin1,blockFin2;
+    int checkFin;
+    bool checkFout;
+    int checkCat;
     bool checkFinish1,checkFinish2;
     Cat cat1;
     Cat cat2;
@@ -189,17 +189,17 @@ void Program::sort(int type){
 				blockFin2=0;				
 				break;
 				}
-			    --blockFin2;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+			    --blockFin2;
 			    if(checkCat==1)cat1=temp;
 			    else cat2=temp;
 			    if(compare(cat1,cat2,type)==1){
-			    if(checkFout){fout1<<cat1;cout<<"----"<<1<<endl;}
-				else {fout2<<cat1;cout<<"----"<<2<<endl;}
+			    if(checkFout)fout1<<cat1;
+				else fout2<<cat1;
 				checkCat=1;
 			 	}
 			    else{
-				if(checkFout){fout1<<cat2;cout<<"----"<<1<<endl;}
-				else {fout2<<cat2;cout<<"----"<<2<<endl;}
+				if(checkFout)fout1<<cat2;
+				else fout2<<cat2;
 				checkCat=2;				    
 				}
 			    }
@@ -210,7 +210,7 @@ void Program::sort(int type){
 			    }
 			if(!fin1.eof() || !fin2.eof()){
 			    if(checkFout)checkFout=false;
-			    else checkFout=true;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+			    else checkFout=true;
 			    }
 			continue;
 			}
@@ -223,17 +223,17 @@ void Program::sort(int type){
 				blockFin1=0;
 				break;
 				}
-			    --blockFin1;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+			    --blockFin1;
 			    if(checkCat==1)cat1=temp;
 			    else cat2=temp;
 			    if(compare(cat1,cat2,type)==1){
-				if(checkFout){fout1<<cat1;cout<<"----"<<1<<endl;}
-				else {fout2<<cat1;cout<<"----"<<2<<endl;}
+				if(checkFout)fout1<<cat1;
+				else fout2<<cat1;
 				checkCat=1;
 				}
 			    else{
-				if(checkFout){fout1<<cat2;cout<<"----"<<1<<endl;}
-				else {fout2<<cat2;cout<<"----"<<2<<endl;}	
+				if(checkFout)fout1<<cat2;
+				else fout2<<cat2;	
 				checkCat=2;			    
 				}
 			    }
@@ -244,7 +244,7 @@ void Program::sort(int type){
 			    }
 			if(!fin1.eof() || !fin2.eof()){
 			    if(checkFout)checkFout=false;
-			    else checkFout=true;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+			    else checkFout=true;
 			    }
 			continue;			    
 			}
@@ -256,7 +256,7 @@ void Program::sort(int type){
 			blockFin2+=blockFin1;
 			blockFin1=0;continue;
 			}
-		    --blockFin1;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+		    --blockFin1;
 		    }
 		if(checkFin==2){
 		    fin2>>temp;
@@ -265,13 +265,13 @@ void Program::sort(int type){
 			blockFin1+=blockFin2;
 			blockFin2=0;continue;
 			}
-		    --blockFin2;cout<<"--"<<blockFin1<<"--"<<blockFin2<<endl;
+		    --blockFin2;
 		    }
 		if(checkCat==1)cat1=temp;
 		else cat2=temp;
 		if(compare(cat1,cat2,type)==1){
-		    if(checkFout){fout1<<cat1;cout<<"----"<<1<<endl;}
-		    else {fout2<<cat1;cout<<"----"<<2<<endl;}
+		    if(checkFout)fout1<<cat1;
+		    else fout2<<cat1;
 		    if(checkCat==2){
 			if(checkFin==1)checkFin=2;
 			else checkFin=1;
@@ -279,8 +279,8 @@ void Program::sort(int type){
 		    checkCat=1;	
 		    }
 		else{
-		    if(checkFout){fout1<<cat2;cout<<"----"<<1<<endl;}
-		    else {fout2<<cat2;cout<<"----"<<2<<endl;}
+		    if(checkFout)fout1<<cat2;
+		    else fout2<<cat2;
 		    if(checkCat==1){
 			if(checkFin==1)checkFin=2;
 			else checkFin=1;
