@@ -1,15 +1,28 @@
 #include"Generator.h"
-Generator::Cat::Cat(string n,string b,char s,int a){
-    c_name=n;
-    c_breed=b;
-    c_gender=s;
-    c_age=a;
+Generator::Cat::Cat(string n,string b,int a,char g){
+    for(int i=0;i<64;++i){
+	if(i<n.size())name[i]=tolower(n[i]);
+        else name[i]='\0';
+        }
+    for(int i=0;i<64;++i){
+	if(i<b.size())breed[i]=tolower(b[i]);
+        else breed[i]='\0';
+        }
+    if(a>9){
+	age[0]=a/10;
+	age[1]=a%10;	
+        }
+    else{
+    	age[0]=a;
+	age[1]='\0';
+        }
+    gender=g;
 }
 void Generator::Cat::print(ofstream & fout){
-    fout<<c_name<<endl;
-    fout<<c_breed<<endl;
-    fout<<c_gender<<endl;
-    fout<<c_age<<endl;
+    fout.write((char*)&name,64);
+    fout.write((char*)&breed,64);
+    fout.write((char*)&age,2);
+    fout.write((char*)&gender,1);
 }
 bool Generator::check(ifstream & fin,vector<string> & v){
     string buf;
@@ -21,6 +34,7 @@ bool Generator::check(ifstream & fin,vector<string> & v){
         }
 }
 bool Generator::work(int quantity,int max_age){
+    char gender;
     ifstream fm("male.txt");
     ifstream ff("female.txt");
     ifstream fb("breed.txt");
@@ -35,11 +49,11 @@ bool Generator::work(int quantity,int max_age){
 	if(rand() % 2)gender='m';
 	else gender='f';
   	if(gender == 'm'){
-	    Cat cat(vM[rand() % vM.size()],vB[rand() % vB.size()],gender,rand() % max_age + 1);
+	    Cat cat(vM[rand() % vM.size()],vB[rand() % vB.size()],rand() % max_age + 1,gender);
 	    cat.print(fr);
 	    }
-	else {
-	    Cat cat(vF[rand() % vF.size()],vB[rand() % vB.size()],gender,rand() % max_age + 1);
+	else{
+	    Cat cat(vF[rand() % vF.size()],vB[rand() % vB.size()],rand() % max_age + 1,gender);
 	    cat.print(fr);
 	    }
         }

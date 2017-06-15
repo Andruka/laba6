@@ -8,19 +8,14 @@ using namespace std;
 class Generator{
     class Cat{
       public:
-        string c_name;
-	string c_breed;
-        char c_gender;
-        int c_age;
-        Cat(string n,string b,char s,int a);
+        char name[64];
+	char breed[64];
+        char age[2];
+        char gender;
+        Cat(string n,string b,int a,char g);
         void print(ofstream & fout);
     };
-    int fsize,msize,bsize;
     vector<string>vF,vM,vB;
-    string name;
-    string breed;
-    char gender;
-    int age;
   public:
     bool check(ifstream & fin,vector<string> & v);
     bool work(int quantity,int max_age);
